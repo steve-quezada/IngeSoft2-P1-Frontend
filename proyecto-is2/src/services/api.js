@@ -2,7 +2,7 @@ const API_URL = 'http://localhost:5000';
 
 export const api = {
   // Crear una nueva pregunta
-  createQuestion: async (title, description, anonymous = false) => {
+  createQuestion: async (title, description, anonymous = false, authorName = "") => {
     const response = await fetch(`${API_URL}/questions`, {
       method: 'POST',
       headers: {
@@ -12,6 +12,7 @@ export const api = {
         title,
         description,
         anonymous,
+        author_name: authorName,
       }),
     });
     

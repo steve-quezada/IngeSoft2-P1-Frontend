@@ -9,7 +9,7 @@ function Pregunta() {
     const [nuevaRespuesta, setNuevaRespuesta] = useState("") // Hook para registrar la nueva respuesta
     const navigate = useNavigate() //Hook para manejar la navegacion
     const location = useLocation()
-    const {pregunta, descripcion} = location.state || {}
+    const {pregunta, descripcion, autor} = location.state || {}
 
 
     function manejarEnvio(e) { 
@@ -27,7 +27,8 @@ function Pregunta() {
 return (
     <div>
         <h2>{pregunta}</h2>
-        {descripcion && <p><strong>Descripcion:</strong>{descripcion}</p>}
+        {descripcion && <p><strong>Descripcion:</strong> {descripcion}</p>}
+        {autor && <p><strong>Autor:</strong> {autor}</p>}
 
         <form onSubmit={manejarEnvio}>
         <input

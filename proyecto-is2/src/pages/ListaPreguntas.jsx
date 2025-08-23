@@ -29,7 +29,8 @@ function ListaPreguntas() {
             state: {
                 pregunta: pregunta.title,
                 descripcion: pregunta.description,
-                id: pregunta.id
+                id: pregunta.id,
+                autor: pregunta.author
             }
         })
     }
