@@ -1,29 +1,33 @@
 import { useParams } from "react-router-dom"
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 
 
 function Pregunta() {
     const { texto } = useParams()   // Hook para recibir la pregunta con el URL
     const [respuestas, setRespuestas] = useState([]) // Hook para actualizar la lista de respuestas
     const [nuevaRespuesta, setNuevaRespuesta] = useState("") // Hook para registrar la nueva respuesta
-    const navigate = useNavigate()
+    const navigate = useNavigate() //Hook para manejar la navegacion
+    const location = useLocation()
+    const {pregunta, descripcion} = location.state || {}
 
-    function manejarEnvio(e) {
+
+    function manejarEnvio(e) { 
         e.preventDefault()
-        if (nuevaRespuesta.trim() !== "") {
+        if (nuevaRespuesta.trim() !== "") { //Si la respuesta contiene algo utilizamos os hooks para actualizar la lista y la respuesta
         setRespuestas([...respuestas, nuevaRespuesta])
         setNuevaRespuesta("")
         }
     }
 
-    function botonInicio(){
+    function botonInicio(){ //Funcion para volver a la Home Page
         navigate('/')
     }
 
 return (
     <div>
-        <h2>{decodeURIComponent(texto)}</h2>
+        <h2>{pregunta}</h2>
+        {descripcion && <p><strong>Descripcion:</strong>{descripcion}</p>}
 
         <form onSubmit={manejarEnvio}>
         <input
