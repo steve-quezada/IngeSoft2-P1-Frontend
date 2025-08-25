@@ -1,0 +1,29 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.mainLista {
+  background-color: #424038;
+  min-height: 100vh;
+  display: flex;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  flex-direction: column;
+  align-items: center;     /* CENTRA HORIZONTALMENTE */
+  padding: 25px;
+}
+
+h2{
+    font-size: 3rem;
+    color: aliceblue;
+}
+
+
+p{
+    font-size: 1.5rem;
+    color: aliceblue;
+}
+
+small{
+    color: aliceblue;
+}

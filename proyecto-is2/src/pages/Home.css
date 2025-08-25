@@ -1,0 +1,102 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+  background-color: #424038;
+  min-height: 100vh;
+  display: flex;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;    
+  padding: 25px;
+}
+
+
+h1 {   
+  font-size: 5rem;        
+  text-align: center;     
+  
+  font-weight: 100;
+  color: aliceblue;
+  margin-bottom: 10px;    
+}
+
+.botonPreguntas {
+  background-color: #6c63ff; 
+  color: white;              
+  border: none;              
+  padding: 14px 28px;        
+  border-radius: 8px;        
+  font-size: 1.2rem;         
+  cursor: pointer;           
+  transition: 0.3s ease;     
+  margin: 20px auto;         
+  display: block;
+}
+
+.botonPreguntas:hover {
+  background-color: #5750d9;
+}
+
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; 
+  width: 100%;
+  max-width: 800px;
+}
+
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 14px;            
+  border-radius: 6px;
+  border:none;
+  outline: none;
+  font-size: 1.5rem;         
+  background-color: #424038;
+  color: aliceblue;
+  border-bottom: 1px solid aliceblue;
+}
+
+
+textarea {
+  min-height: 50px;
+  resize: none;
+  overflow: hidden;
+}
+
+
+.error {
+  color: #ff6b6b;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.checkbox1{
+    font-size: 1.2rem;
+    display: "flex";
+    color: aliceblue;
+}
+
+.botonCancelar {
+  background-color: #a94442; 
+  color: white;              
+  border: none;              
+  padding: 14px 28px;        
+  border-radius: 8px;        
+  font-size: 1.2rem;         
+  cursor: pointer;           
+  transition: 0.3s ease;     
+  margin: 20px auto;         
+  display: block;
+}
+
+.botonCancelar:hover {
+  background-color: #cf5452;
+}

@@ -1,10 +1,9 @@
 import { useParams } from "react-router-dom"
 import { useState } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
-
+import "./Pregunta.css"
 
 function Pregunta() {
-    const { texto } = useParams()   // Hook para recibir la pregunta con el URL
     const [respuestas, setRespuestas] = useState([]) // Hook para actualizar la lista de respuestas
     const [nuevaRespuesta, setNuevaRespuesta] = useState("") // Hook para registrar la nueva respuesta
     const navigate = useNavigate() //Hook para manejar la navegacion
@@ -24,13 +23,15 @@ function Pregunta() {
         navigate('/')
     }
 
+    
 return (
-    <div>
-        <h2>{pregunta}</h2>
-        {descripcion && <p><strong>Descripcion:</strong> {descripcion}</p>}
+    <div className="mainPregunta">
+        <h2 className="h2Pregunta">{pregunta}</h2>
         {autor && <p><strong>Autor:</strong> {autor}</p>}
+        {descripcion && <p><strong>Descripcion:</strong> {descripcion}</p>}
+        
 
-        <form onSubmit={manejarEnvio}>
+        <form className="formulario"onSubmit={manejarEnvio}>
         <input
             type="text"
             placeholder="Escribe tu respuesta"
@@ -41,11 +42,16 @@ return (
         </form>
 
         <h3>Respuestas:</h3>
-        <ul>
-            {respuestas.map((r, i) => (
-                <li key={i}>{r}</li>
-            ))}
-        </ul>
+        {respuestas.length > 0 ? (
+            <ul>
+                {respuestas.map((r, i) => (
+                    <li className="respuestas" key={i}>{r}</li> 
+                ))}
+            </ul>
+        ) : (
+            <p>No hay respuestas aún</p>
+        )}
+        
         <button onClick={botonInicio}>Inicio</button>
     </div>
   )

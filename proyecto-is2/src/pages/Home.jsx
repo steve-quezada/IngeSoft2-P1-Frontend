@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { api } from "../services/api"
+import "./Home.css"
 
 function Home() {
     const [pregunta, setPregunta] = useState("") //Hook que maneja la pregunta
@@ -10,6 +11,7 @@ function Home() {
     const [loading, setLoading] = useState(false) // Hook para manejar el estado de carga
     const [error, setError] = useState("") // Hook para manejar errores
     const navigate = useNavigate() //Hook para manjear la navegacion
+    const [mostrarFormulario, setMostrarFormulario] = useState(false) //Hook que ayuda en el aspecto visual del formulario
 
     async function manejarEnvio(e) {
         e.preventDefault()
@@ -44,7 +46,8 @@ function Home() {
         try {
             setLoading(true)
             const preguntaCreada = await api.createQuestion(pregunta, descripcion, anonimo, nombreAutor)
-            
+            setMostrarFormulario(false) 
+
             navigate("/pregunta", {
                 state: {
                     pregunta: preguntaCreada.title,
@@ -61,61 +64,89 @@ function Home() {
     }
 
 return (
-    <div>
+    <div className = "main" >
         <h1>Preguntas Facultad de Ciencias</h1>
-        <button onClick={() => navigate("/preguntas")} style={{marginBottom: '20px'}}>
+        
+        
+        <button className="botonPreguntas" onClick={() => navigate("/preguntas")}>
             Ver todas las preguntas
         </button>
+
         
-        {error && <div style={{color: 'red', marginBottom: '10px'}}>{error}</div>}
-        <form onSubmit={manejarEnvio}>
-        <input
-            type="text"
-            placeholder="¿Cuál es tu pregunta? Entre 5 y 80 caracteres"
-            value={pregunta}
-            onChange={(e) => setPregunta(e.target.value)}
-            disabled={loading}
-        />
-        <br />
-        <textarea 
-            placeholder="Descripcion. Max 300 caracteres"
-            value = {descripcion}
-            onChange={(e) => setDescripcion(e.target.value)}
-            disabled={loading}
-        />
-        <br />
-        <input
-            type="text"
-            placeholder="Tu nombre (requerido si no marcas anónimo, máx 50 caracteres)"
-            value={nombreAutor}
-            onChange={(e) => setNombreAutor(e.target.value)}
-            disabled={loading || anonimo}
-            style={{
-                marginTop: '10px',
-                opacity: anonimo ? 0.5 : 1,
-                cursor: anonimo ? 'not-allowed' : 'text'
-            }}
-        />
-        <br />
-        <label style={{display: 'flex', alignItems: 'center', margin: '10px 0'}}>
-            <input
-                type="checkbox"
-                checked={anonimo}
-                onChange={(e) => {
-                    setAnonimo(e.target.checked)
-                    if (e.target.checked) {
-                        setNombreAutor("") // Limpiar el nombre si se marca anónimo
-                    }
-                }}
-                disabled={loading}
-                style={{marginRight: '8px'}}
-            />
-            Publicar pregunta de forma anónima
-        </label>
-        <button type="submit" disabled={loading}>
-            {loading ? "Enviando..." : "Enviar"}
-        </button>
-        </form>
+        {!mostrarFormulario && (
+            <button 
+                className="botonPreguntas" 
+                onClick={() => setMostrarFormulario(true)} 
+            >
+                Nueva pregunta
+            </button>
+        )}
+        
+        
+        {mostrarFormulario && (
+            <>
+                {error && <div className="error">{error}</div>}
+                <form onSubmit={manejarEnvio} className="formulario">
+                    <input
+                        type="text"
+                        placeholder="¿Cuál es tu pregunta? Entre 5 y 80 caracteres"
+                        value={pregunta}
+                        onChange={(e) => setPregunta(e.target.value)}
+                        disabled={loading}
+                    />
+                    <br />
+                    <textarea 
+                        placeholder="Descripcion. Max 300 caracteres"
+                        value = {descripcion}
+                        onChange={(e) => setDescripcion(e.target.value)}
+                        disabled={loading}
+                    />
+                    <br />
+                    <input
+                        type="text"
+                        placeholder="Tu nombre (requerido si no marcas anónimo, máx 50 caracteres)"
+                        value={nombreAutor}
+                        onChange={(e) => setNombreAutor(e.target.value)}
+                        disabled={loading || anonimo}
+                        style={{
+                            marginTop: '10px',
+                            opacity: anonimo ? 0.5 : 1,
+                            cursor: anonimo ? 'not-allowed' : 'text'
+                        }}
+                    />
+                    <br />
+                    <label className="checkbox1" >
+                        <input
+                            className="checbox2"
+                            type="checkbox"
+                            checked={anonimo}
+                            onChange={(e) => {
+                                setAnonimo(e.target.checked)
+                                if (e.target.checked) {
+                                    setNombreAutor("") 
+                                }
+                            }}
+                            disabled={loading}
+                            style={{marginRight: '8px'}}
+                        />
+                        Publicar pregunta de forma anónima
+                    </label>
+                    <button className="botonPreguntas" type="submit" disabled={loading}>
+                        {loading ? "Enviando..." : "Enviar"}
+                    </button>
+
+                    <button 
+                        type="button" 
+                        className="botonCancelar" 
+                        onClick={() => setMostrarFormulario(false)}
+                        disabled={loading}
+                        style={{marginTop: '10px', backgroundColor: ''}}
+                    >
+                        Cancelar
+                    </button>
+                </form>
+            </>
+        )}
     </div>
   )
 }

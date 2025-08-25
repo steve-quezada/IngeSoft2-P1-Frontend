@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { api } from "../services/api"
+import "./ListaPreguntas.css"
 
 function ListaPreguntas() {
     const [preguntas, setPreguntas] = useState([])
@@ -39,7 +40,7 @@ function ListaPreguntas() {
     if (error) return <div style={{color: 'red'}}>Error: {error}</div>
 
     return (
-        <div>
+        <div className="mainLista">
             <h1>Todas las Preguntas</h1>
             <button onClick={() => navigate("/")}>Nueva Pregunta</button>
             
