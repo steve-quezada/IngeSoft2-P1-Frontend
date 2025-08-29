@@ -47,17 +47,12 @@ function ListaPreguntas() {
             {preguntas.length === 0 ? (
                 <p>No hay preguntas disponibles</p>
             ) : (
-                <div>
+                <div className="boxPreguntas">
                     {preguntas.map((pregunta) => (
-                        <div key={pregunta.id} style={{
-                            border: '1px solid #ccc', 
-                            margin: '10px 0', 
-                            padding: '10px',
-                            cursor: 'pointer'
-                        }} onClick={() => verPregunta(pregunta)}>
-                            <h3>{pregunta.title}</h3>
-                            {pregunta.description && <p>{pregunta.description}</p>}
-                            <small>Por: {pregunta.author}</small>
+                        <div className="boxIndividual" key={pregunta.id}
+                            onClick={() => verPregunta(pregunta)}>
+                            <h3 className="tituloPregunta">{pregunta.title}</h3>
+                            <small className="autorPregunta">Por: {pregunta.author}</small>
                         </div>
                     ))}
                 </div>

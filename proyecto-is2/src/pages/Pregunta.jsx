@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { api } from "../services/api"
 import { useState } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 import "./Pregunta.css"
@@ -14,7 +14,7 @@ function Pregunta() {
     function manejarEnvio(e) { 
         e.preventDefault()
         if (nuevaRespuesta.trim() !== "") { //Si la respuesta contiene algo utilizamos os hooks para actualizar la lista y la respuesta
-        setRespuestas([...respuestas, nuevaRespuesta])
+        setRespuestas([...respuestas, { texto: nuevaRespuesta, votos: 0 }])
         setNuevaRespuesta("")
         }
     }
@@ -23,35 +23,57 @@ function Pregunta() {
         navigate('/')
     }
 
+    function votar(index, cambio) {
+        setRespuestas((prev) =>
+        prev.map((r, i) =>
+        i === index ? { ...r, votos: r.votos + cambio } : r
+        ));
+    }
+
+
     
 return (
     <div className="mainPregunta">
-        <h2 className="h2Pregunta">{pregunta}</h2>
-        {autor && <p><strong>Autor:</strong> {autor}</p>}
-        {descripcion && <p><strong>Descripcion:</strong> {descripcion}</p>}
-        
+        <div className="boxPregunta">
+            <h2 className="h2Pregunta">{pregunta}</h2>
+            {autor && <p className="autor"><strong>Autor:</strong> {autor}</p>}
+            {descripcion && <p className="descripcion"><strong>Descripcion:</strong> {descripcion}</p>}
+        </div>
 
-        <form className="formulario"onSubmit={manejarEnvio}>
-        <input
-            type="text"
-            placeholder="Escribe tu respuesta"
-            value={nuevaRespuesta}
-            onChange={(e) => setNuevaRespuesta(e.target.value)}
-        />
-        <button type="submit">Responder</button>
-        </form>
+        <div className="boxFormulario">
+            <form className="formularioRespuesta"onSubmit={manejarEnvio}>
+            <textarea className="textareaRespuesta"
+                placeholder="Escribe tu respuesta"
+                value={nuevaRespuesta}
+                onChange={(e) => setNuevaRespuesta(e.target.value)}
+                onInput={(e) => {
+                    e.target.style.height = "auto";   // Reinicia altura
+                    e.target.style.height = e.target.scrollHeight + "px"; // Ajusta según contenido
+                }}
+            />
+            <button className="botonResponder" type="submit">Enviar</button>
+            </form>
+        </div>
 
-        <h3>Respuestas:</h3>
-        {respuestas.length > 0 ? (
-            <ul>
-                {respuestas.map((r, i) => (
-                    <li className="respuestas" key={i}>{r}</li> 
-                ))}
-            </ul>
-        ) : (
-            <p>No hay respuestas aún</p>
-        )}
-        
+        <div className="boxRespuestas">
+            <h3>Respuestas:</h3>
+            {respuestas.length > 0 ? (
+                <ul>
+                    {respuestas.map((r, i) => (
+                    <li className="respuestas" key={i}>
+                        <div className="respuestaTexto">{r.texto}</div>
+                        <div className="votos">
+                        <button onClick={() => votar(i, 1)}>👍</button>
+                        <span>{r.votos}</span>
+                        <button onClick={() => votar(i, -1)}>👎</button>
+                        </div>
+                    </li>
+                    ))}
+                </ul>
+                ) : (
+                <p>No hay respuestas aún</p>
+                )}
+        </div>            
         <button onClick={botonInicio}>Inicio</button>
     </div>
   )

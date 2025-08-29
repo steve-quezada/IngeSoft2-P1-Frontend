@@ -27,3 +27,30 @@ p{
 small{
     color: aliceblue;
 }
+
+.boxPreguntas{
+    width: 1200px;         /* ancho máximo */
+    margin: 50px auto;        /* centra horizontalmente */
+    padding: 30px;
+    background-color: #424038; /* color de fondo del box */
+    border-radius: 20px;      /* bordes redondeados */
+    text-align: left;       /* centra el texto */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.boxIndividual{
+    border: 1px solid #ccc; 
+    margin: 10px 0;
+    padding: 10px;
+    cursor: pointer
+}
+
+.tituloPregunta{
+    color: aliceblue;
+    font-size: 1.6rem;
+    padding: 0 0 0 0;
+}
+
+.autorPregunta{
+    color: aliceblue;
+}
