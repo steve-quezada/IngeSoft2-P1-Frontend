@@ -9,38 +9,38 @@ body, html {
   display: flex;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   flex-direction: column;
-  align-items: center;     /* CENTRA HORIZONTALMENTE */
+  align-items: center;     
   padding: 25px;
   overflow-wrap: break-word;
 }
 
 .boxPregunta{
-    max-width: 700px;         /* ancho máximo */
-    margin: 50px auto;        /* centra horizontalmente */
+    max-width: 700px;         
+    margin: 50px auto;       
     padding: 30px;
-    background-color: #424038; /* color de fondo del box */
-    border-radius: 20px;      /* bordes redondeados */
-    text-align: left;       /* centra el texto */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* sombra elegante */
+    background-color: #424038; 
+    border-radius: 20px;      
+    text-align: left;       
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
 }
 
 .h2Pregunta {
     font-size: 2.5rem;
     color: aliceblue;
-    margin-bottom: 10px; /* poco espacio debajo */
+    margin-bottom: 10px; 
 }
 
 .autor {
     font-size: 1.1rem;
-    color: aliceblue;      /* un gris azulado suave */
+    color: aliceblue;     
     margin-top: 0;
-    margin-bottom: 20px; /* separa de la descripción */
+    margin-bottom: 20px; 
 }
 
 .descripcion {
     font-size: 1.6rem;
     color: aliceblue;
-    line-height: 1.6;    /* hace el texto más legible */
+    line-height: 1.6;   
 }
 
 button {
@@ -66,22 +66,21 @@ button:hover {
 }
 
 .formularioRespuesta {
-  display: flex; /* Make it a flex container */
-  /* Add alignment rules as needed */
+  display: flex; 
   flex-direction: row; 
-  align-items: center; /* Vertically aligns the content */
-  width: 100%; /* Makes sure it takes up available space */
+  align-items: center; 
+  width: 100%; 
 }
 
 .textareaRespuesta {
   width: 100%;
-  min-height: 40px;         /* altura mínima */
-  max-height: 200px;        /* altura máxima */
+  min-height: 40px;         
+  max-height: 200px;        
   padding: 10px;
   font-size: 1.2rem;
   border-radius: 8px;;
-  resize: none;             /* quita el resize manual */
-  overflow-y: auto;         /* scroll si se excede el max-height */
+  resize: none;             
+  overflow-y: auto;         
   box-sizing: border-box;
 }
 
@@ -91,8 +90,8 @@ button:hover {
   flex-direction: row;
   gap: 15px;
   width: 100%;
-  max-width: 800px;
-  align-items: center; /* Recommended to vertically align button and form */
+  width: 800px;
+  align-items: center; 
 }
 
 
@@ -139,11 +138,11 @@ h3{
 }
 
 .boxRespuestas{
-    width: 1200px;         /* ancho máximo */
-    margin: 50px auto;        /* centra horizontalmente */
+    width: 1200px;         
+    margin: 50px auto;        
     padding: 30px;
-    background-color: #424038; /* color de fondo del box */
-    border-radius: 20px;      /* bordes redondeados */
-    text-align: left;       /* centra el texto */
+    background-color: #424038; 
+    border-radius: 20px;     
+    text-align: left;       
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }

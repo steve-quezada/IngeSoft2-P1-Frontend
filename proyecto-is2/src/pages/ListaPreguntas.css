@@ -9,7 +9,7 @@ body, html {
   display: flex;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   flex-direction: column;
-  align-items: center;     /* CENTRA HORIZONTALMENTE */
+  align-items: center;     
   padding: 25px;
 }
 
@@ -29,12 +29,12 @@ small{
 }
 
 .boxPreguntas{
-    width: 1200px;         /* ancho máximo */
-    margin: 50px auto;        /* centra horizontalmente */
+    width: 1200px;        
+    margin: 50px auto;       
     padding: 30px;
-    background-color: #424038; /* color de fondo del box */
-    border-radius: 20px;      /* bordes redondeados */
-    text-align: left;       /* centra el texto */
+    background-color: #424038;
+    border-radius: 20px;      
+    text-align: left;       
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
