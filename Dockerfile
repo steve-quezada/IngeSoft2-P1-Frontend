@@ -6,15 +6,15 @@ FROM node:20-alpine as builder
 # Establecer directorio de trabajo
 WORKDIR /app
 
-# Copiar archivos de dependencias
-COPY package*.json ./
+# Copiar archivos de dependencias desde proyecto-is2
+COPY proyecto-is2/package*.json ./
 
 # Instalar dependencias con manejo de errores mejorado
 RUN npm cache clean --force && \
     npm ci --legacy-peer-deps || npm install --legacy-peer-deps --no-audit
 
-# Copiar código fuente
-COPY . .
+# Copiar código fuente desde proyecto-is2
+COPY proyecto-is2/ .
 
 # Construir la aplicación para producción
 RUN npm run build
