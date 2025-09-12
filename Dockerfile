@@ -9,8 +9,9 @@ WORKDIR /app
 # Copiar archivos de dependencias
 COPY package*.json ./
 
-# Instalar dependencias (regenerar package-lock.json si es necesario)
-RUN npm install
+# Instalar dependencias con manejo de errores mejorado
+RUN npm cache clean --force && \
+    npm ci --legacy-peer-deps || npm install --legacy-peer-deps --no-audit
 
 # Copiar código fuente
 COPY . .
