@@ -2,7 +2,7 @@ name: Build and Push Frontend Docker Image
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -11,7 +11,45 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build-frontend:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+        cache-dependency-path: 'proyecto-is2/package-lock.json'
+
+    - name: Install dependencies
+      working-directory: proyecto-is2
+      run: |
+        npm cache clean --force
+        npm ci --legacy-peer-deps || npm install --legacy-peer-deps --no-audit
+
+    - name: Run unit tests
+      working-directory: proyecto-is2
+      run: |
+        npm run test:run
+
+    - name: Run build test
+      working-directory: proyecto-is2
+      run: |
+        npm run build
+
+    - name: Run installation tests
+      working-directory: proyecto-is2
+      run: |
+        node -e "console.log('Node.js version:', process.version)"
+        npm --version
+        node -e "console.log('React project built successfully')"
+
+  build-and-push:
+    needs: test
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -37,6 +75,9 @@ jobs:
           type=ref,event=branch
           type=ref,event=pr
           type=sha,prefix=sha-
+          type=raw,value=latest,enable={{is_default_branch}}
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
 
     - name: Build and push Frontend Docker image
       uses: docker/build-push-action@v5
