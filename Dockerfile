@@ -3,6 +3,9 @@
 # Etapa 1: Build - Instalación de dependencias y construcción
 FROM node:20-alpine as builder
 
+# Argumento para la URL de la API
+ARG VITE_API_URL=http://localhost:5000
+
 # Establecer directorio de trabajo
 WORKDIR /app
 
@@ -16,7 +19,8 @@ RUN npm cache clean --force && \
 # Copiar código fuente desde proyecto-is2
 COPY proyecto-is2/ .
 
-# Construir la aplicación para producción
+# Construir la aplicación para producción con la variable de entorno
+ENV VITE_API_URL=$VITE_API_URL
 RUN npm run build
 
 # Etapa 2: Producción - Servidor ligero con Supervisor
