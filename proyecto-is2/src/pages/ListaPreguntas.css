@@ -4,7 +4,7 @@ body, html {
 }
 
 .mainLista {
-  background-color: #424038;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   min-height: 100vh;
   display: flex;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -13,44 +13,82 @@ body, html {
   padding: 25px;
 }
 
+h1 {
+    font-size: 3rem;
+    color: #0f766e;
+    text-shadow: 0 0 15px rgba(15, 118, 110, 0.2);
+}
+
 h2{
     font-size: 3rem;
-    color: aliceblue;
+    color: #0f766e;
+    text-shadow: 0 0 15px rgba(15, 118, 110, 0.2);
 }
 
 
 p{
     font-size: 1.5rem;
-    color: aliceblue;
+    color: #f0f9ff;
 }
 
 small{
-    color: aliceblue;
+    color: #fb923c;
 }
 
 .boxPreguntas{
     width: 1200px;        
     margin: 50px auto;       
     padding: 30px;
-    background-color: #424038;
+    background: linear-gradient(135deg, rgba(15, 118, 110, 0.08) 0%, rgba(17, 94, 89, 0.04) 100%);
+    border: 2px solid rgba(15, 118, 110, 0.25);
     border-radius: 20px;      
     text-align: left;       
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 32px rgba(15, 118, 110, 0.15);
 }
 
 .boxIndividual{
-    border: 1px solid #ccc; 
+    border: 2px solid rgba(15, 118, 110, 0.2);
+    background: linear-gradient(135deg, rgba(44, 62, 80, 0.4) 0%, rgba(44, 62, 80, 0.2) 100%);
     margin: 10px 0;
     padding: 10px;
-    cursor: pointer
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.boxIndividual:hover {
+    border-color: #0f766e;
+    background: linear-gradient(135deg, rgba(15, 118, 110, 0.15) 0%, rgba(17, 94, 89, 0.08) 100%);
+    box-shadow: 0 4px 15px rgba(15, 118, 110, 0.25);
+    transform: translateY(-2px);
 }
 
 .tituloPregunta{
-    color: aliceblue;
+    color: #f0f9ff;
     font-size: 1.6rem;
     padding: 0 0 0 0;
 }
 
 .autorPregunta{
-    color: aliceblue;
+    color: #fb923c;
+}
+
+button {
+  background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
+  color: white;              
+  border: none;              
+  padding: 14px 28px;        
+  border-radius: 8px;        
+  font-size: 1.2rem;         
+  cursor: pointer;           
+  transition: all 0.3s ease;     
+  margin: 20px auto;         
+  display: block;
+  box-shadow: 0 4px 15px rgba(15, 118, 110, 0.25);
+}
+
+button:hover {
+  background: linear-gradient(135deg, #115e59 0%, #134e4a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(15, 118, 110, 0.3);
 }

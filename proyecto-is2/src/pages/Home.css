@@ -4,7 +4,7 @@ body, html {
 }
 
 .main {
-  background-color: #424038;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   min-height: 100vh;
   display: flex;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -20,25 +20,29 @@ h1 {
   text-align: center;     
   
   font-weight: 100;
-  color: aliceblue;
+  color: #0f766e;
+  text-shadow: 0 0 15px rgba(15, 118, 110, 0.2);
   margin-bottom: 10px;    
 }
 
 .botonPreguntas {
-  background-color: #6c63ff; 
+  background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
   color: white;              
   border: none;              
   padding: 14px 28px;        
   border-radius: 8px;        
   font-size: 1.2rem;         
   cursor: pointer;           
-  transition: 0.3s ease;     
+  transition: all 0.3s ease;     
   margin: 20px auto;         
   display: block;
+  box-shadow: 0 4px 15px rgba(15, 118, 110, 0.25);
 }
 
 .botonPreguntas:hover {
-  background-color: #5750d9;
+  background: linear-gradient(135deg, #115e59 0%, #134e4a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(15, 118, 110, 0.3);
 }
 
 
@@ -56,12 +60,19 @@ textarea {
   width: 100%;
   padding: 14px;            
   border-radius: 6px;
-  border:none;
+  border: 2px solid #2c3e50;
   outline: none;
   font-size: 1.5rem;         
-  background-color: #424038;
-  color: aliceblue;
-  border-bottom: 1px solid aliceblue;
+  background-color: rgba(44, 62, 80, 0.5);
+  color: #f0f9ff;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: #0f766e;
+  background-color: rgba(44, 62, 80, 0.7);
+  box-shadow: 0 0 15px rgba(15, 118, 110, 0.25);
 }
 
 
@@ -73,30 +84,37 @@ textarea {
 
 
 .error {
-  color: #ff6b6b;
+  color: #fb923c;
   margin-bottom: 10px;
   text-align: center;
+  padding: 10px;
+  background-color: rgba(251, 146, 60, 0.1);
+  border-radius: 6px;
+  border-left: 4px solid #fb923c;
 }
 
 .checkbox1{
     font-size: 1.2rem;
     display: "flex";
-    color: aliceblue;
+    color: #f0f9ff;
 }
 
 .botonCancelar {
-  background-color: #a94442; 
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
   color: white;              
   border: none;              
   padding: 14px 28px;        
   border-radius: 8px;        
   font-size: 1.2rem;         
   cursor: pointer;           
-  transition: 0.3s ease;     
+  transition: all 0.3s ease;     
   margin: 20px auto;         
   display: block;
+  box-shadow: 0 4px 15px rgba(251, 146, 60, 0.3);
 }
 
 .botonCancelar:hover {
-  background-color: #cf5452;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(251, 146, 60, 0.4);
 }
