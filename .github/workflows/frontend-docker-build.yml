@@ -137,4 +137,4 @@ jobs:
           # Cleanup old images
           docker image prune -f
           
-          echo "✅ Frontend deployed successfully!"
+          echo "Frontend deployed successfully!"
